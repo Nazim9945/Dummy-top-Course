@@ -41,7 +41,10 @@ const App = () => {
        });
      });
   }
-  else filterData=datas[category]
+  else {
+    //@ts-ignore
+    filterData=datas[category]
+  }
  
 
   useEffect(()=>{
@@ -61,12 +64,7 @@ const App = () => {
    );
   }
   return (
-<<<<<<< Updated upstream
-    <div className="">
-      <div className="flex flex-col justify-center items-center">
-        <Heading />
-        <FilterButton onclick={(name) => setCategory(name)} />
-=======
+
     <div className="flex flex-col justify-center items-center">
       <Heading />
       <div className=" bg-gray-800 min-h-screen w-full">
@@ -83,15 +81,9 @@ const App = () => {
             filterData={filterData}
           />
         </div>
->>>>>>> Stashed changes
+      </div>
       </div>
 
-      <CardComponent
-        setliked={setliked}
-        liked={liked}
-        filterData={filterData}
-      />
-    </div>
   );
 }
 
