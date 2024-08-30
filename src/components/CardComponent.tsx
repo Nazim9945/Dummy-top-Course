@@ -1,6 +1,7 @@
-import { dataObject } from "../App"
-import Card from "./Card"
-
+import { Bounce, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { dataObject } from "../App";
+import Card from "./Card";
 interface props {
   filterData: dataObject[];
   liked: string[];
@@ -13,18 +14,29 @@ const CardComponent = ({filterData,liked,setliked}:props) => {
       {filterData.map(({ image, title, description, id }: dataObject) => {
         return (
           <Card
-          setliked={setliked}
-       liked={liked}
+            setliked={setliked}
+            liked={liked}
             key={id}
             image={image}
             title={title}
             description={description}
-             id={id}
-           
-           
+            id={id}
           />
         );
       })}
+      <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+transition={Bounce}
+/>
     </div>
   );
 }
