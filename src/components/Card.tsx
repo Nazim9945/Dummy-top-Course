@@ -47,15 +47,18 @@ const handler=(id:string)=>{
  }
 }
     const {url,alt}=image
-    const desc=description.slice(0,100)+ "...";
+    const desc =
+      description.length > 50
+        ? description.slice(0, 60) + "..."
+        : description;
   return (
-    <div className="max-w-[200px]  bg-green-800 p-2 m-2 text-white rounded-md">
+    <div className="min-h-[300px] w-[200px]  bg-green-800 p-2 m-2 text-white rounded-md relative">
       
-        <img className="h-full w-full" src={url} alt={alt} />
+        <img className="w-full" src={url} alt={alt} />
 
         <div className="font-semibold">{title}</div>
         <div>{desc}</div>
-        <button onClick={()=>handler(id)} className="flex justify-center items-center rounded-full bg-white border max-w-8 p-2">
+        <button onClick={()=>handler(id)} className="flex justify-center items-center rounded-full bg-white border max-w-8 p-2 absolute right-0 top-24">
             {!liked.includes(id)?<FcLikePlaceholder size={"15"}/>:<FcLike size={"15"}/>}
         </button>
       
