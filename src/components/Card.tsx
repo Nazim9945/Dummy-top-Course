@@ -49,7 +49,7 @@ const handler=(id:string)=>{
     const {url,alt}=image
     const desc=description.slice(0,100)+ "...";
   return (
-    <div className="max-w-[200px]  border-solid border-2 border-sky-500 p-2 m-2">
+    <div className="max-w-[200px]  bg-green-800 p-2 m-2 text-white rounded-md">
       
         <img className="h-full w-full" src={url} alt={alt} />
 

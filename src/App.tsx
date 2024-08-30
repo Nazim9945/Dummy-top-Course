@@ -65,22 +65,22 @@ const App = () => {
   }
   return (
 
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col">
       <Heading />
       <div className=" bg-gray-800 min-h-screen w-full">
-        <div className="">
+       
           <FilterButton
             category={category}
             onclick={(name) => setCategory(name)}
           />
-        </div>
-        <div className="">
+      
+        
           <CardComponent
             setliked={setliked}
             liked={liked}
             filterData={filterData}
           />
-        </div>
+       
       </div>
       </div>
 
