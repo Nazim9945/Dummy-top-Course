@@ -1,12 +1,14 @@
 import { filterButton } from "../config";
 import Button from "./Button";
 
-
-const FilterButton = () => {
+interface props{
+    onclick:(name:string)=>void
+}
+const FilterButton = ({onclick}:props) => {
   return (
     <div className="flex justify-center items-center">
         {filterButton.map(btn=>{
-            return <Button key={btn.id} name={btn.name}/>
+            return <Button onclick={(name)=>onclick(name)}key={btn.id} name={btn.name}/>
         })}
     </div>
   )

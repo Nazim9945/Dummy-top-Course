@@ -26,31 +26,42 @@ interface fetchResponse{
 
 const App = () => {
   const[datas,setData]=useState<fetchData>({} as fetchData) 
+  const[category,setCategory]=useState("All")
+  const[liked,setliked]=useState([{} as string])
+  
+
+
   let filterData:dataObject[]=[]
-// console.log(Object.values(datas))
-   Object.values(datas).forEach((data: dataObject[]) => {
-    // console.log(data)
-     data.forEach((element) => {
-       filterData.push(element);
+  if(category=='All'){
+     Object.values(datas).forEach((data: dataObject[]) => {
+       data.forEach((element) => {
+         filterData.push(element);
+       });
      });
-   });
+  }
+  else filterData=datas[category]
  
 
   useEffect(()=>{
     axios.get<fetchResponse>(
       "https://codehelp-apis.vercel.app/api/get-top-courses"
     ).then((res)=>{setData(res.data.data)
-      console.log("hey",res.data.data)
     });
   },[])
   return (
-    <div className="flex flex-col justify-center items-center">
-      <Heading/>
-      <FilterButton/>
-      <CardComponent filterData={filterData}/>
+    <div className="">
+      <div className="flex flex-col justify-center items-center">
+        <Heading />
+        <FilterButton onclick={(name) => setCategory(name)} />
+      </div>
+
+      <CardComponent
+        setliked={setliked}
+        liked={liked}
+        filterData={filterData}
+      />
     </div>
-    
-  )
+  );
 }
 
 export default App
